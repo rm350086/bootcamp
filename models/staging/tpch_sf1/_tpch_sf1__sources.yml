@@ -24,3 +24,12 @@ sources:
           tests:
             - not_null
             - unique
+
+      - name: region
+        description: Regions table holding repetitive data.
+        columns:
+        - name: r_regionkey
+          description: This is the Region Key.
+          tests:
+            - not_null
+            - unique
