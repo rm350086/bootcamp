@@ -7,5 +7,6 @@ source AS (
 
 SELECT
     n_nationkey AS nation_key,
-    n_name AS nation_name
+    n_name AS nation_name,
+    n_regionkey as nation_region_key
 FROM source
