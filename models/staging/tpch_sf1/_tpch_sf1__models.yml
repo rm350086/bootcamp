@@ -1,0 +1,64 @@
+version: 2
+
+models:
+  - name: stg_tpch_sf1__customer
+    description: Customer staging view.
+    columns:
+    - name: cust_key
+      description: This is the Customer Key.
+      tests:
+        - not_null
+        - unique
+        - dbt_expectations.expect_column_to_exist
+    - name: cust_name
+      description: This is the Customer Name.
+      tests:
+        - not_null
+        - unique
+        - dbt_expectations.expect_column_to_exist
+        - dbt_expectations.expect_column_values_to_be_of_type:
+            column_type: varchar
+    - name: cust_address
+      description: This is the Customer Address.
+      tests:
+        - not_null
+        - unique
+        - dbt_expectations.expect_column_to_exist
+        - dbt_expectations.expect_column_values_to_be_of_type:
+            column_type: varchar
+
+  - name: stg_tpch_sf1__nation
+    description: Nation staging view.
+    columns:
+    - name: nation_key
+      description: This is the Nation Key. 
+      tests:
+        - not_null
+        - unique
+        - dbt_expectations.expect_column_to_exist
+    - name: nation_name
+      description: This is the Nation Name.
+      tests:
+        - not_null
+        - unique
+        - dbt_expectations.expect_column_value_lengths_to_be_between:
+            min_value: 3
+            max_value: 15
+
+  - name: stg_tpch_sf1__region
+    description: Nation staging view.
+    columns:
+    - name: region_key
+      description: This is the Region Key.
+      tests:
+        - not_null
+        - unique
+        - dbt_expectations.expect_column_to_exist
+    - name: region_name
+      description: This is the Region Name.
+      tests:
+        - not_null
+        - unique
+        - dbt_expectations.expect_column_value_lengths_to_be_between:
+            min_value: 3
+            max_value: 15
